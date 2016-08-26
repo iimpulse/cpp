@@ -1,0 +1,20 @@
+{
+  "name": "pubmedmine",
+  "version": "1.0.0",
+  "description": "Web application for searching pubmed ",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael A. Gargano",
+  "license": "Open-Source",
+  "dependencies":{
+	"express":"*",
+	"angular":"*",
+	"angular-route":"*",
+	"bootstrap":"*",
+	"mongoose":"*",
+  "ng-dialog":"*"
+	
+   }
+}

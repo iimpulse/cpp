@@ -1,0 +1,100 @@
+#selector{
+
+	margin:8px;
+
+}
+
+.popover>.arrow{
+
+	display:none !important;
+}
+
+a{
+	cursor:pointer;
+}
+mark{
+
+	background-color:yellow;
+	color:black;
+}
+.popover{
+
+    max-width: 600px !important;
+    top: 5px !important;
+    left: -600.5px !important;
+    display: block !important;
+    width: 600px !important;
+    font-size:12px;
+
+}
+
+.highlight{
+
+
+}
+.popover-title{
+	font-size:13px;
+	font-weight:bold;
+
+}
+
+
+.panel-active{
+	box-shadow: 0 0 10px #337AB7;
+}
+
+.accordion-well{
+	max-height:275px;
+	overflow:scroll;
+	line-height:30px;
+	margin-bottom:4px;
+}
+
+.panel{
+	margin-bottom:2px !important;
+
+}
+
+.accordion-well p{
+	font-size:14px;
+
+}
+
+td{
+	padding:10px	;
+}
+
+.statsTable{
+
+	text-align:center;
+
+}
+
+.navbar{
+    background-color: #3c8dbc;
+    background-image: linear-gradient(#04519b,#044687 60%,#033769);
+    background-repeat: no-repeat;
+    z-index: 811;
+    border:none !important;
+    position:fixed;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color:white !important;
+}
+.navbar-default .navbar-nav>li>a:hover{
+	color:white !important;
+
+}
+
+.navbar-nav>li:hover{
+	background-color: rgb(124,33,40);
+
+}
+
+.navbar-default .navbar-nav>.active>a{
+	color: white;
+	background-color: rgb(124,33,40);
+
+}
+
