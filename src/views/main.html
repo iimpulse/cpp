@@ -7,10 +7,10 @@
 	</div>
 	<div class="row">
 	<div ng-show="genelist" class="col-lg-5">
-		<h4 ng-show="!selGene">Select a gene to continue!</h4>
-		<h5 style="float:left;">Gene Symbol: </h6>
-		<select id="selector" class="select" ng-model="selGene" ng-options="gene as gene for gene in genelist" ng-change="watchSel(selGene)">
-		</select>
+		<h4>Search for a gene symbol you want to research.</h4>
+		<!--<select id="selector" class="select" ng-model="selGene" ng-options="gene as gene for gene in genelist" ng-change="watchSel(selGene)">
+		</select>-->
+		<span style="margin-bottom:5px"><b><u>Symbol</u></b></span><input type="text" ng-change="watchSel(selGene)" ng-model="selGene" data-provide="typeahead" class="form-control typeSelect geneInput">
 		<br><br>
 		<div class="geneTabs" ng-show="activeGene">
 			<h3 ng-bind="activeGene.gene"></h3>
@@ -24,6 +24,7 @@
 				<span ng-include="'src/views/tabs.html'"></span>
 			</div> 
 		</div>
+		<div class="loader col-lg-1"></div>
 	<div class="col-lg-offset-1 col-lg-6" ng-show="activeGene">
 		<span ng-include="'src/views/accordion.html'"></span>
 	</div>

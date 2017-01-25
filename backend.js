@@ -31,6 +31,11 @@ app.post("/data/symbol",function(req,res){
 		}
 
 		else{
+			data[0].bcid = isna(data[0].bcid.split(","));
+			data[0].lcid = isna(data[0].lcid.split(","));
+			data[0].pcid = isna(data[0].pcid.split(","));
+			data[0].ccid = isna(data[0].ccid.split(","));
+			data[0].pncid = isna(data[0].pncid.split(","));
 			res.send(data);
 		}
 	
@@ -60,7 +65,6 @@ app.post("/data/articles",function(req,res){
 		}
 		
 		 var file = require(path);
-		 
 		 res.json(file);		
 		 
 	});
@@ -86,11 +90,23 @@ app.get("/data/symbols",function(req,res){
 			genes.push(lin[0])
 		}
 	 });
-		
+	
 	rd.on('close',function(){
 		res.send(genes);	
 	});		
 });
+
+function isna(data){
+		if(data[0] == "NA"){
+
+				return "";
+
+		}
+		else{
+
+				return data;
+		}
+}
 
 
 var port = process.env.PORT || 8081;

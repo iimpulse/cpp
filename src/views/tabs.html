@@ -1,61 +1,7 @@
 <div class="well"  ng-switch on="$parent.tab">
 	<span ng-switch-when="summary" ng-bind="activeGene.summary"></span>
 	<span ng-switch-when="stats">
-		<table tablestat tablestat-counts="{{artcount}}" tablestat-cancers="{{cancers}}"><table>
-		<!-- <table class="statsTable">
-			
-			<tr style="border-bottom:solid 1px black;">
-				<td>Tumor Type</td>
-				<td>{{activeGene.gene}} Articles</td>
-				<td>Total Articles</td>
-				<td>% {{activeGene.gene}} (By Tumor)</td>
-				<td>% {{activeGene.gene}} (By Gene)</td>
-			</tr>
-			<tr>
-				<td>Bladder Cancer</td>
-				<td ng-bind="artcount.bc"></td>
-				<td ng-bind="ttlcount.bc"></td>
-				<td ng-bind="prctTotal.bc"></td>
-				<td ng-bind="prctGene.bc"></td>
-
-			<tr>
-				<td>Lung Cancer</td>
-				<td ng-bind="artcount.lc"></td>
-				<td ng-bind="ttlcount.lc"></td>
-				<td ng-bind="prctTotal.lc"></td>
-				<td ng-bind="prctGene.lc"></td>
-
-
-			<tr>
-				<td>Prostate Cancer</td>
-				<td ng-bind="artcount.pc"></td>
-				<td ng-bind="ttlcount.pc"></td>
-				<td ng-bind="prctTotal.pc"></td>
-				<td ng-bind="prctGene.pc"></td>
-
-				
-			</tr>
-			<tr>
-				<td>Colon Cancer</td>
-				<td ng-bind="artcount.cc"></td>
-				<td ng-bind="ttlcount.cc"></td>
-				<td ng-bind="prctTotal.cc"></td>
-				<td ng-bind="prctGene.cc"></td>
-
-
-			</tr>
-			<tr>
-				<td>Pancreatic Cancer</td>
-				<td ng-bind="artcount.pn"></td>
-				<td ng-bind="ttlcount.pn"></td>
-				<td ng-bind="prctTotal.pn"></td>
-				<td ng-bind="prctGene.pn"></td>
-
-			</tr>
-		</table> -->
-
-
-
+		<table class="statsTable" tablestat tablestat-gene="{{selGene}}" tablestat-totalcount="{{ttlcount}}" tablestat-prcttotal="{{prctTotal}}" tablestat-prctgene="{{prctGene}}" tablestat-counts="{{artcount}}" tablestat-cancers="{{cancers}}"></table>
 	</span>
 	<span ng-switch-when="links">
 		<ol>
