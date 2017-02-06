@@ -1,12 +1,14 @@
 angular.module("main.service",[])
     .factory("dataFactory", function ($http,$q) {
         var property = false;
+        var articles = {};
 	
         return {
             getSymbols: function (creds) {
 				var deferred = $q.defer();
 				$http({method:'GET',
 				       url:'/data/symbols',
+				       cache:true
 				       })
 				.success(function(data){
 					deferred.resolve(data);			
@@ -20,7 +22,8 @@ angular.module("main.service",[])
 				var deferred = $q.defer();
 				$http({method:'POST',
 					url:'/data/symbol',
-					params:{"gene":src}
+					params:{"gene":src},
+					cache:true
 					})
 				.success(function(data){
 					deferred.resolve(data);
@@ -31,21 +34,23 @@ angular.module("main.service",[])
 				return deferred.promise;
 			
 	  		},
-		getArticles: function(cancer){
+		getArticles: function(cancers){
+			cancers = JSON.stringify(cancers);
 			var deferred= $q.defer();
 			$http({method:'POST',
-				url:'/data/articles/',
-				params:{"cancer":cancer}
-			
+			url:'/data/articles/',
+			params: {"all":cancers},
+			cache:true,
 			})
 			.success(function(data){
 				deferred.resolve(data);
+				articles = data;
 	
 			}).error(function(){
 				deferred.reject("Article Fetch Error");
 
 			});
 			return deferred.promise;
-			}
-		}	
+		 }
+	}	
 });

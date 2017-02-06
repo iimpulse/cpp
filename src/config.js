@@ -21,7 +21,11 @@ var app = angular.module("cpp",
 	$routeProvider
 	.when('/',{
 		templateUrl: '/src/views/main.html',
-		controller:'genericCtrl'
+		controller:'genericCtrl',
+		reloadOnSearch:false,
 	})
+	.when('/about',{
+		templateUrl: '/src/views/about.html',
 
+	})
 }]);
