@@ -1,11 +1,22 @@
 angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFactory',function($scope,dataFactory){
-	
+        $scope.onClick = function (points, evt) {
+          console.log(points, evt);
+        };
 	angular.element(document).ready(function(){
 		$(".loader").hide();
 		$scope.cancers = ["bladder","lung","prostate","colon","pancreatic"];
+			dataFactory.getTotals().then(function(data){
+				if(!data){
+					throw err;
+				}else{
+
+					$scope.totals = data;
+
+				}
+			});
 	});
 	$('.typeAhead').typeahead({
-		  showHintOnFocus:true,
+		  showHintOnFocus:false,
 		  autoSelect:false,
 		  afterSelect:compare,
 		  source: function (query, process) {
@@ -33,12 +44,7 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 				if(current.gene == $('.typeSelect').val()){
 					$scope.activeGene = current;
 					$(".loader").show();
-					$(".loader").hide();
-					/*$scope.filterbc = isna($scope.$scope.activeGene.bcid.split(","));
-					$scope.filterlc = isna($scope.$scope.activeGene.lcid.split(","));
-					$scope.filterpc = isna($scope.$scope.activeGene.pcid.split(","));
-					$scope.filtercc = isna($scope.$scope.activeGene.ccid.split(","));
-					$scope.filterpn = isna($scope.$scope.activeGene.pncid.split(","));*/
+					$(".loaderTwo").show();
 					dataFactory.getArticles(current).then(function(data){
 						if(!data){
 
@@ -47,14 +53,23 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 						else{
 							$scope.articles = data;
 							console.log($scope.articles);
+							$scope.activeGene.bcid = isNothing($scope.activeGene.bcid.split(","));
+							$scope.activeGene.lcid = isNothing($scope.activeGene.lcid.split(","));
+							$scope.activeGene.pcid = isNothing($scope.activeGene.pcid.split(","));
+							$scope.activeGene.pncid = isNothing($scope.activeGene.pncid.split(","));
+							$scope.activeGene.ccid = isNothing($scope.activeGene.ccid.split(","));
 							var geneTotal = $scope.activeGene.bcid.length + $scope.activeGene.lcid.length + $scope.activeGene.pcid.length + $scope.activeGene.ccid.length + $scope.activeGene.pncid.length;
 							$scope.artcount = {"bc":$scope.activeGene.bcid.length,"lc":$scope.activeGene.lcid.length,"pc":$scope.activeGene.pcid.length,"cc":$scope.activeGene.ccid.length,"pn":$scope.activeGene.pncid.length};
-							$scope.ttlcount = {"bc":$scope.articles.bc.length,"lc":$scope.articles.lung.length,"pc":$scope.articles.prostate.length,"cc":$scope.articles.colon.length,"pn":$scope.articles.pancreatic.length};
-							$scope.prctTotal = {"bc":$scope.activeGene.bcid.length/$scope.articles.bc.length,"lc":$scope.activeGene.lcid.length/$scope.articles.lung.length,"pc":$scope.activeGene.pcid.length/$scope.articles.prostate.length,"cc":$scope.activeGene.ccid.length/$scope.articles.colon.length,"pn":$scope.activeGene.pncid.length/$scope.articles.pancreatic.length};
+							$scope.ttlcount = {"bc":$scope.totals.bladder,"lc":$scope.totals.lung,"pc":$scope.totals.prostate,"cc":$scope.totals.colon,"pn":$scope.totals.pancreatic};
+							$scope.prctTotal = {"bc":$scope.activeGene.bcid.length/$scope.totals.bladder,"lc":$scope.activeGene.lcid.length/$scope.totals.lung,"pc":$scope.activeGene.pcid.length/$scope.totals.prostate,"cc":$scope.activeGene.ccid.length/$scope.totals.colon,"pn":$scope.activeGene.pncid.length/$scope.totals.pancreatic};
 							$scope.prctGene = {"bc":$scope.activeGene.bcid.length/geneTotal,"lc":$scope.activeGene.lcid.length/geneTotal,"pc":$scope.activeGene.pcid.length/geneTotal,"cc":$scope.activeGene.ccid.length/geneTotal,"pn":$scope.activeGene.pncid.length/geneTotal};
 							$scope.prctTotal = decimal($scope.prctTotal);
 							$scope.prctGene = decimal($scope.prctGene);
+							$scope.lineChartlabels = ["Bladder", "Colon", "Lung", "Prostate", "Pancreatic"];
+  							$scope.lineChartseries = ['Gene Count Per Tumor (%)'];
+							$scope.lineChartData = [[$scope.prctGene.bc * 100,$scope.prctGene.bc * 100, $scope.prctGene.cc * 100, $scope.prctGene.lc * 100, $scope.prctGene.pn * 100, $scope.prctGene.pc * 100]];
 							$scope.tab = "summary";
+							$(".loader").hide();
 						}
 					});
 					
@@ -79,6 +94,13 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 	}
 		return data;
 
+	}
+
+	function isNothing(articles){
+		if(articles.length == 0 || articles == "NA"){
+			return [];
+		}
+		return articles;
 	}
 }])
 

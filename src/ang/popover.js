@@ -13,8 +13,9 @@ angular.module('popoverDirective', []).directive('popover', function () {
                 content:function(){
                     var abstract = scope.abstract.split(" ");
                     for(i = 0; i < abstract.length; i++){
-			
-			var word = abstract[i].replace(/[.,]/,"")
+			            var word = abstract[i].replace(/[.,;()]/,"")
+                        word =word.replace(/[.,;()]/,"") // lazy replace all.
+                        word = word.toUpperCase();
                         if(scope.gene == word){
                             abstract[i] = "<mark>" + abstract[i] + "</mark>";     
                         }

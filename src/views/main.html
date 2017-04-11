@@ -3,7 +3,7 @@
 		<h4>Gathering important data...this will only take a moment!</h4><br>
 		<div ng-show="!articles" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
         <span id="bar-text">&nbsp;</span></div>
-        
+
 	</div>-->
 	<div class="row">
 	<div class="col-lg-5">
@@ -12,20 +12,20 @@
 		</select>-->
 		<span style="margin-bottom:5px"><b><u>Symbol</u></b></span><input type="text" data-provide="typeahead" class="form-control typeSelect geneInput typeAhead">
 		<br><br>
-		<div class="geneTabs" ng-show="activeGene">
+		<div class="geneTabs" ng-hide="!articles">
 			<h3 ng-bind="activeGene.gene"></h3>
 			  <ul ng-init="tab='summary'" style="cursor:pointer;" class="nav nav-tabs">
 			    <li ng-class="{'active':tab=='summary'}"><a ng-click="tab='summary'">Summary</a></li>
 			    <li ng-class="{'active':tab=='stats'}"><a ng-click="tab = 'stats'">Statistics</a></li>
 			    <li ng-class="{'active':tab=='links'}"><a ng-click="tab = 'links'">Quick Links</a></li>
 
-			    <li ng-class="{'active':tab=='wordcloud'}"><a ng-click="tab = 'wordcloud'">Word Cloud</a></li>
+			    <li ng-class="{'active':tab=='wordcloud'}"><a ng-click="tab = 'wordcloud'">Graphs</a></li>
 			  </ul>
 				<span ng-include="'src/views/tabs.html'"></span>
-			</div> 
+			</div>
 		</div>
 		<div class="loader col-lg-1"></div>
-	<div class="col-lg-offset-1 col-lg-6" ng-show="activeGene">
+	<div class="col-lg-offset-1 col-lg-6" ng-hide="!articles">
 		<span ng-include="'src/views/accordion.html'"></span>
 	</div>
 	</div>

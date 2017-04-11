@@ -1,6 +1,6 @@
-<div class="well"  ng-switch on="$parent.tab">
+<div class="well" ng-controller="genericCtrl"  ng-switch on="$parent.tab">
 	<span ng-switch-when="summary" ng-bind="activeGene.summary"></span>
-	<span ng-switch-when="stats">
+	<span ng-switch-when="stats" ng-show="articles">
 		<table class="statsTable" tablestat tablestat-gene="{{selGene}}" tablestat-totalcount="{{ttlcount}}" tablestat-prcttotal="{{prctTotal}}" tablestat-prctgene="{{prctGene}}" tablestat-counts="{{artcount}}" tablestat-cancers="{{cancers}}"></table>
 	</span>
 	<span ng-switch-when="links">
@@ -10,5 +10,7 @@
 
 		</ol>
 	</span>
-	<span ng-switch-when="wordcloud">Word Cloud Here</span>
+	<span ng-switch-when="wordcloud">
+		<canvas id="line" class="chart chart-line" chart-data="lineChartData" chart-labels="lineChartlabels" chart-series="lineChartseries" style="width: 500px; height:261px;"></canvas>
+	</span>
 </div>

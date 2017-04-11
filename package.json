@@ -8,13 +8,13 @@
   },
   "author": "Michael A. Gargano",
   "license": "Open-Source",
-  "dependencies":{
-	"express":"*",
-	"angular":"*",
-	"angular-route":"*",
-	"bootstrap":"*",
-	"mongoose":"*",
-  "ng-dialog":"*"
-	
-   }
+  "dependencies": {
+    "angular": "*",
+    "angular-chart.js": "^1.1.1",
+    "angular-route": "*",
+    "bootstrap": "*",
+    "express": "*",
+    "mongoose": "*",
+    "ng-dialog": "*"
+  }
 }

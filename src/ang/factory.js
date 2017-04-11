@@ -51,6 +51,22 @@ angular.module("main.service",[])
 
 			});
 			return deferred.promise;
+		 },
+		 getTotals: function(){
+			var deferred= $q.defer();
+			$http({method:'GET',
+			url:'/data/totals/',
+			cache:true,
+			})
+			.success(function(data){
+				deferred.resolve(data);
+				articles = data;
+	
+			}).error(function(){
+				deferred.reject("Article Fetch Error");
+
+			});
+			return deferred.promise;
 		 }
 	}	
 });

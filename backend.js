@@ -49,8 +49,8 @@ app.post("/data/symbol",function(req,res){
 			data[0].pncid = isna(data[0].pncid.split(","));
 			res.send(data);
 		}
-	
-	});		
+
+	});
 });
 
 app.post("/data/articles",function(req,res){
@@ -107,12 +107,12 @@ app.post("/data/articles",function(req,res){
 
 						});
 						results.bc = data;
-						
+
 					}
 
 				});
-				
-				
+
+
 		/*var quer = req.query.cancer;
 		var collection = null;
 		var articles = [];
@@ -123,9 +123,9 @@ app.post("/data/articles",function(req,res){
 			articles.push(file);
 		}
 		console.log(articles.length);
-		
+
 		res.send(articles);	*/
-		 
+
 	});
 
 app.get("/data/symbols",function(req,res){
@@ -139,35 +139,20 @@ app.get("/data/symbols",function(req,res){
 			data.sort(function(a,b){
 			if (a.gene < b.gene)
 			    return -1;
-			  if (a.gene > b.gene)
+			if (a.gene > b.gene)
 			    return 1;
-			  return 0;
+			return 0;
 			})
 			res.send(data);
 		}
-	
-	});
-	/*var rd = readline.createInterface({
-		input:fs.createReadStream('src/assets/genes2.txt'),
-		terminal:false
 
 	});
-	
-	var genes = []
-	var count = 0;
-	rd.on('line',function(line){
-		var lin = line.split("\t");
-		if(count == 0){
-			count++;
-		}
-		else{
-			genes.push(lin[0])
-		}
-	 });
-	
-	rd.on('close',function(){
-		res.send(genes);	
-	});	*/
+});
+
+app.get("/data/totals",function(req,res){
+		//get local json
+	var file = require("./src/assets/json/totals.json");
+	res.json(file);
 });
 
 function isna(data){
@@ -185,7 +170,7 @@ function isna(data){
 
 var port = process.env.PORT || 8081;
 app.listen(port);
-// shoutout to the user                     
+// shoutout to the user
 console.log('Magic happens on port ' + port);
-// expose app           
+// expose app
 exports = module.exports = app;

@@ -4,8 +4,11 @@
 
 }
 
+.margin-top{
+    margin-top:50px;
+}
+
 .no-animation{
-    
     color:white;
 }
 
@@ -51,6 +54,14 @@ mark{
     left:55px !important;
     font-size:12px;
     position:fixed;
+}
+.panel-disabled{
+    box-shadow: 0 0 10px #FF5E5E;
+    pointer-events: none;
+    cursor: default;
+}
+.panel-content{
+    box-shadow: 0 0 10px #8DFA2E;
 }
 
 .highlight{

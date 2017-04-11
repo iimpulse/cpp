@@ -1,7 +1,8 @@
+<div class="accordion-group">
 <h4>Review {{activeGene.gene}} in PubMed Articles</h4>
 <h6>* Hover an article to see more information</h5> 
 		<div class="panel-group" id="accordion">
-			<div ng-class="{'panel-active':bladderc,'panel panel-default':1==1}" ng-disable="filterbc.length">
+			<div ng-class="{'panel-active':bladderc,'panel panel-default':1==1,'panel-disabled':articles.bc.length == 0,'panel-content':articles.bc.length > 0}">
 				<div class="panel-heading">
 					<a ng-click="bladderc = !bladderc" style="text-decoration:none; cursor:pointer;">
 					<h4 class="panel-title">
@@ -14,7 +15,7 @@
 				</div>
 		
 			</div>
-			<div class="well accordion-well" id="bladder" ng-show="bladderc && filterbc.length != 0">
+			<div class="well accordion-well" id="bladder" ng-show="bladderc">
 				<span ng-repeat='data in articles.bc | inArray:activeGene.bcid:"pmid"'>
 					<div class="article">
 						<span ng-bind="$index + 1"></span>.&nbsp;&nbsp;<a target="__blank"  popover popover-title="{{data.title}}" popover-abs="{{data.ab}}" popover-auth="{{data.authors}}" popover-gene="{{activeGene.gene}}" ng-href="http://www.ncbi.nlm.nih.gov/pubmed/{{data.pmid}}" ng-bind="data.title"><i class="fa fa-external-link"></i></a>
@@ -22,7 +23,27 @@
 					</div>
 				</span>
 			</div>
-			<div ng-class="{'panel-active':lungc,'panel panel-default':1==1}" ng-disable="filterlc.length">
+			<div ng-class="{'panel-active':colc,'panel panel-default':1==1,'panel-disabled':articles.colon.length == 0,'panel-content':articles.colon.length > 0}">
+				<div class="panel-heading">
+					<a ng-click="colc =!colc" style="text-decoration:none; cursor:pointer;">
+					<h4 class="panel-title">
+					 Colon Cancer
+					<span ng-show="!colc" style="float:right !important;" class="glyphicon glyphicon-plus"></span>
+					<span ng-show="colc" style="float:right !important;" class="glyphicon glyphicon-minus"></span>
+					</h4>
+					</a>
+				</div>
+		
+			</div>
+			<div class="well accordion-well" ng-show="colc">
+				<span ng-repeat='data in articles.colon | inArray:activeGene.ccid:"pmid"'>
+					<div class="article">
+						<span ng-bind="$index + 1"></span>.&nbsp;&nbsp;<a popover-title="{{data.title}}" popover-gene="{{activeGene.gene}}" popover popover-abs="{{data.ab}}" popover-auth="{{data.authors}}" target="__blank" ng-href="http://www.ncbi.nlm.nih.gov/pubmed/{{data.pmid}}" ng-bind="data.title"></a>
+						
+					</div>
+				</span>
+			</div>
+			<div ng-class="{'panel-active':lungc,'panel panel-default':1==1,'panel-disabled':articles.lung.length == 0,'panel-content':articles.lung.length > 0}">
 				<div class="panel-heading">
 					<a ng-click="lungc =!lungc" style="text-decoration:none; cursor:pointer;">
 					<h4 class="panel-title">
@@ -34,7 +55,7 @@
 				</div>
 		
 			</div>
-			<div class="well accordion-well" id="bladder" ng-show="lungc">
+			<div class="well accordion-well" ng-show="lungc">
 				<span ng-repeat='data in articles.lung | inArray:activeGene.lcid:"pmid"'>
 					<div class="article">
 						<span ng-bind="$index + 1"></span>.&nbsp;&nbsp;<a target="__blank" popover popover-title="{{data.title}}" popover-abs="{{data.ab}}" popover-auth="{{data.authors}}" popover-gene="{{activeGene.gene}}" ng-href="http://www.ncbi.nlm.nih.gov/pubmed/{{data.pmid}}" ng-bind="data.title"></a>
@@ -42,7 +63,27 @@
 					</div>
 				</span>
 			</div>
-			<div ng-class="{'panel-active':prosc,'panel panel-default':1==1}" ng-disable="filterpc.length">
+			<div ng-class="{'panel-active':panc,'panel panel-default':1==1,'panel-disabled':articles.pancreatic.length == 0,'panel-content':articles.pancreatic.length > 0}">
+				<div class="panel-heading">
+					<a ng-click="panc =!panc" style="text-decoration:none; cursor:pointer;">
+					<h4 class="panel-title">
+					 Pancreatic Cancer
+					<span ng-show="!panc" style="float:right !important;" class="glyphicon glyphicon-plus"></span>
+					<span ng-show="panc" style="float:right !important;" class="glyphicon glyphicon-minus"></span>
+					</h4>
+					</a>
+				</div>
+		
+			</div>
+			<div class="well accordion-well" ng-show="panc">
+				<span ng-repeat='data in articles.pancreatic | inArray:activeGene.pncid:"pmid"'>
+					<div class="article">
+						<span ng-bind="$index + 1"></span>.&nbsp;&nbsp;<a popover-title="{{data.title}}" popover-gene="{{activeGene.gene}}" popover popover-abs="{{data.ab}}" popover-auth="{{data.authors}}" target="__blank" ng-href="http://www.ncbi.nlm.nih.gov/pubmed/{{data.pmid}}" ng-bind="data.title" target="__blank"></a>
+						
+					</div>
+				</span>
+			</div>
+			<div ng-class="{'panel-active':prosc,'panel panel-default':1==1,'panel-disabled':articles.prostate.length == 0,'panel-content':articles.prostate.length > 0}" ng-disable="filterpc.length">
 				<div class="panel-heading">
 					<a ng-click="prosc =!prosc" style="text-decoration:none; cursor:pointer;">
 					<h4 class="panel-title">
@@ -62,45 +103,5 @@
 					</div>
 				</span>
 			</div>
-			<div ng-class="{'panel-active':colc,'panel panel-default':1==1}" ng-disable="filtercc.length">
-				<div class="panel-heading">
-					<a ng-click="colc =!colc" style="text-decoration:none; cursor:pointer;">
-					<h4 class="panel-title">
-					 Colon Cancer
-					<span ng-show="!colc" style="float:right !important;" class="glyphicon glyphicon-plus"></span>
-					<span ng-show="colc" style="float:right !important;" class="glyphicon glyphicon-minus"></span>
-					</h4>
-					</a>
-				</div>
-		
-			</div>
-			<div class="well accordion-well" ng-show="colc">
-				<span ng-repeat='data in colon | inArray:activeGene.ccid:"pmid"'>
-					<div class="article">
-						<span ng-bind="$index + 1"></span>.&nbsp;&nbsp;<a popover-title="{{data.title}}" popover-gene="{{activeGene.gene}}" popover popover-abs="{{data.ab}}" popover-auth="{{data.authors}}" target="__blank" ng-href="http://www.ncbi.nlm.nih.gov/pubmed/{{data.pmid}}" ng-bind="data.title"></a>
-						
-					</div>
-				</span>
-			</div>
-			<div ng-class="{'panel-active':panc,'panel panel-default':1==1}" ng-disable="filterpn.length">
-				<div class="panel-heading">
-					<a ng-click="panc =!panc" style="text-decoration:none; cursor:pointer;">
-					<h4 class="panel-title">
-					 Pancreatic Cancer
-					<span ng-show="!panc" style="float:right !important;" class="glyphicon glyphicon-plus"></span>
-					<span ng-show="panc" style="float:right !important;" class="glyphicon glyphicon-minus"></span>
-					</h4>
-					</a>
-				</div>
-		
-			</div>
-			<div class="well accordion-well" ng-show="panc">
-				<span ng-repeat='data in pancreatic | inArray:activeGene.pncid:"pmid"'>
-					<div class="article">
-						<span ng-bind="$index + 1"></span>.&nbsp;&nbsp;<a popover-title="{{data.title}}" popover-gene="{{activeGene.gene}}" popover popover-abs="{{data.ab}}" popover-auth="{{data.authors}}" target="__blank" ng-href="http://www.ncbi.nlm.nih.gov/pubmed/{{data.pmid}}" ng-bind="data.title" target="__blank"></a>
-						
-					</div>
-				</span>
-			</div>
-
 		</div>
+</div>
