@@ -17,9 +17,8 @@
 			  <ul ng-init="tab='summary'" style="cursor:pointer;" class="nav nav-tabs">
 			    <li ng-class="{'active':tab=='summary'}"><a ng-click="tab='summary'">Summary</a></li>
 			    <li ng-class="{'active':tab=='stats'}"><a ng-click="tab = 'stats'">Statistics</a></li>
+			    <li ng-class="{'active':tab=='graph'}"><a ng-click="tab = 'graph'">Graphs</a></li>
 			    <li ng-class="{'active':tab=='links'}"><a ng-click="tab = 'links'">Quick Links</a></li>
-
-			    <li ng-class="{'active':tab=='wordcloud'}"><a ng-click="tab = 'wordcloud'">Graphs</a></li>
 			  </ul>
 				<span ng-include="'src/views/tabs.html'"></span>
 			</div>
