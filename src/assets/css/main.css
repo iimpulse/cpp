@@ -140,4 +140,7 @@ td{
     text-decoration: none;
     margin-left:5px;
 }
-
+canvas#line{
+	height:350px !important;
+	width:200px !important;
+}
