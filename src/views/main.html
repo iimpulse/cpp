@@ -6,7 +6,7 @@
 
 	</div>-->
 	<div class="row">
-	<div class="col-lg-5">
+	<div class="col-lg-4">
 		<h4>Search for a gene symbol you want to research.</h4>
 		<!--<select id="selector" class="select" ng-model="selGene" ng-options="gene as gene for gene in genelist" ng-change="watchSel(selGene)">
 		</select>-->
@@ -23,8 +23,8 @@
 				<span ng-include="'src/views/tabs.html'"></span>
 			</div>
 		</div>
-		<div class="loader col-lg-1"></div>
-	<div class="col-lg-offset-1 col-lg-6" ng-hide="!articles">
+		<div class="loader col-lg-push-1 col-lg-1"></div>
+	<div class="col-lg-6 col-lg-push-2" ng-hide="!articles">
 		<span ng-include="'src/views/accordion.html'"></span>
 	</div>
 	</div>

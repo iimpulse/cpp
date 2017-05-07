@@ -17,11 +17,12 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 	});
 	$('.typeAhead').typeahead({
 		  showHintOnFocus:false,
-		  autoSelect:false,
+		  autoSelect:true,
 		  afterSelect:compare,
 		  source: function (query, process) {
-		     $.ajax({
-			      url: "/data/symbols?q=" + query, 
+		     if(query != ""){
+			$.ajax({
+			      url: "/data/symbols?q=" + query.toUpperCase(), 
 			      type: 'GET',
 			      dataType: 'json',
 			      async:true,
@@ -29,7 +30,8 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 			        // in this example, json is simply an array of strings
 			        return process(data);
 			       });
-		      },
+		      }	      
+		    },
 		   displayText: function(item){
 		   		return item.gene;
 		   }
@@ -45,7 +47,6 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 					$scope.activeGene = current;
 					$scope.articles = null;
 					$(".loader").show();
-					$(".loaderTwo").show();
 					dataFactory.getArticles(current).then(function(response){
 						if(!response.data){
 

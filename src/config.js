@@ -10,14 +10,10 @@ var app = angular.module("cpp",
 	   'chart.js'
 	]
 )
-.config(['$routeProvider','$httpProvider','ChartJsProvider',function($routeProvider,$httpProvider,ChartJsProvider){
-
-
-	$httpProvider.defaults.cache = false;
-	if(!$httpProvider.defaults.headers.get){
-		$httpProvider.defaults.headers.get = {};
-	}
-	$httpProvider.defaults.headers.get['If-Modified-Since'] ='0';
+.config(['$routeProvider','$httpProvider','$locationProvider','ChartJsProvider',function($routeProvider,$httpProvider,$locationProvider,ChartJsProvider){
+	
+	$locationProvider.hashPrefix('');
+	$httpProvider.defaults.cache = true;
 	$routeProvider
 	.when('/',{
 		templateUrl: '/src/views/about.html',
