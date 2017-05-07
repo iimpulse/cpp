@@ -14,6 +14,7 @@
     "angular-route": "*",
     "bootstrap": "*",
     "express": "*",
+    "jquery":"*",
     "mongoose": "*",
     "ng-dialog": "*"
   }

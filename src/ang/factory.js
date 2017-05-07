@@ -10,11 +10,11 @@ angular.module("main.service",[])
 				       url:'/data/symbols',
 				       cache:true
 				       })
-				.success(function(data){
+				.then(function(data){
 					deferred.resolve(data);			
-		            }).error(function(){
+		            	},function(){
 				deferred.reject('Gene List Not Found');
-			    })
+			   	 });
 
 		            return deferred.promise;
 		        },
@@ -25,10 +25,10 @@ angular.module("main.service",[])
 					params:{"gene":src},
 					cache:true
 					})
-				.success(function(data){
+				.then(function(data){
 					deferred.resolve(data);
 		
-				}).error(function(){
+				},function(){
 				  deferred.reject('Gene Not Found');
 				});
 				return deferred.promise;
@@ -42,11 +42,11 @@ angular.module("main.service",[])
 			params: {"all":cancers},
 			cache:true,
 			})
-			.success(function(data){
+			.then(function(data){
 				deferred.resolve(data);
 				articles = data;
 	
-			}).error(function(){
+			},function(){
 				deferred.reject("Article Fetch Error");
 
 			});
@@ -58,11 +58,11 @@ angular.module("main.service",[])
 			url:'/data/totals/',
 			cache:true,
 			})
-			.success(function(data){
+			.then(function(data){
 				deferred.resolve(data);
 				articles = data;
 	
-			}).error(function(){
+			},function(){
 				deferred.reject("Article Fetch Error");
 
 			});

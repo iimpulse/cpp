@@ -26,7 +26,8 @@ var app = angular.module("cpp",
 	.when('/analyze',{
 		templateUrl: '/src/views/main.html',
 		controller:'genericCtrl',
-	}).otherwise('#/');
+	}).otherwise('/');
+
 
 	ChartJsProvider.setOptions({
             chartColors: ['#FF5252', '#FF8A80'],

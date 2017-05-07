@@ -5,12 +5,12 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 	angular.element(document).ready(function(){
 		$(".loader").hide();
 		$scope.cancers = ["bladder","lung","prostate","colon","pancreatic"];
-			dataFactory.getTotals().then(function(data){
-				if(!data){
+			dataFactory.getTotals().then(function(response){
+				if(!response.data){
 					throw err;
 				}else{
 
-					$scope.totals = data;
+					$scope.totals = response.data;
 
 				}
 			});
@@ -46,13 +46,13 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 					$scope.articles = null;
 					$(".loader").show();
 					$(".loaderTwo").show();
-					dataFactory.getArticles(current).then(function(data){
-						if(!data){
+					dataFactory.getArticles(current).then(function(response){
+						if(!response.data){
 
 							throw err;
 						}
 						else{
-							$scope.articles = data;
+							$scope.articles = response.data;
 							console.log($scope.articles);
 							$scope.activeGene.bcid = isNothing($scope.activeGene.bcid.split(","));
 							$scope.activeGene.lcid = isNothing($scope.activeGene.lcid.split(","));
