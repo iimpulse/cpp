@@ -69,7 +69,7 @@ angular.module("main.controller",[]).controller("genericCtrl",['$scope','dataFac
 							$scope.prctGene = decimal($scope.prctGene);
 							$scope.lineChartlabels = ["Bladder", "Colon", "Lung", "Prostate", "Pancreatic"];
   							$scope.lineChartseries = ['Gene Frequency(%)'];
-							$scope.lineChartData = [[$scope.prctGene.bc * 100,$scope.prctGene.bc * 100, $scope.prctGene.cc * 100, $scope.prctGene.lc * 100, $scope.prctGene.pn * 100, $scope.prctGene.pc * 100]];
+							$scope.lineChartData = [[$scope.prctGene.bc * 100,$scope.prctGene.cc * 100, $scope.prctGene.lc * 100, $scope.prctGene.pn * 100, $scope.prctGene.pc * 100]];
 							$scope.tab = "summary";
 							$(".loader").hide();
 						}

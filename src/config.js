@@ -30,7 +30,7 @@ var app = angular.module("cpp",
             responsive: false
           });
           // Configure all line charts
-          ChartJsProvider.setOptions('line', {
-            showLines: true
-          });
+          //ChartJsProvider.setOptions('line', {
+            //showLines: true
+          //});
 }]);
